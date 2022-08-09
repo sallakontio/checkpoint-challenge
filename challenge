@@ -1,0 +1,44 @@
+// CHECKPOINT
+// Tehtävä voidaan ratkaista monin eri tavoin. Ratkaise se parhaalla näkemälläsi tavalla siten, että se toimii komentorivillä (suoritetaan Nodella).
+
+// Tehtäväsi on koodata ohjelma, joka:
+
+// Pyytää käyttäjää syöttämään eri tuotteita ja kuinka paljon ne maksavat
+// Näyttää käyttäjälle kalleimman tuotteen
+// Näyttää käyttäjälle edullisimman tuotteen
+
+let fruitPrices = [];
+let fruitNames = [];
+while (true) {
+  let input = prompt("Lisää hedelmä");
+  if (input === null) {
+    break;
+  }
+  let input2 = prompt("Lisää hedelmän hinta (EUR)");
+  if (input === null) {
+    break;
+  }
+  fruitNames.push(input);
+  fruitPrices.push(input2);
+}
+
+// 'Cancel' kun hedelmät on listattu
+
+const obj = {};
+fruitNames.forEach((element, index) => {
+  obj[element] = fruitPrices[index];
+});
+
+let sortedFruits = [];
+for (var fruits in obj) {
+  sortedFruits.push([fruits, obj[fruits]]);
+}
+sortedFruits.sort(function (a, b) {
+  return a[1] - b[1];
+});
+
+const mostExpense = sortedFruits.slice(-1);
+const leastExpense = sortedFruits[0];
+
+console.log(`Kallein hedelmä on ${mostExpense} EUR`);
+console.log(`Halvin hedelmä on ${leastExpense} EUR`);
