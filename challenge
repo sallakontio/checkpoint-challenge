@@ -1,28 +1,19 @@
-// CHECKPOINT
-// Tehtävä voidaan ratkaista monin eri tavoin. Ratkaise se parhaalla näkemälläsi tavalla siten, että se toimii komentorivillä (suoritetaan Nodella).
-
-// Tehtäväsi on koodata ohjelma, joka:
-
-// Pyytää käyttäjää syöttämään eri tuotteita ja kuinka paljon ne maksavat
-// Näyttää käyttäjälle kalleimman tuotteen
-// Näyttää käyttäjälle edullisimman tuotteen
-
 let fruitPrices = [];
 let fruitNames = [];
+let prompt = require("prompt-sync")({ sigint: true });
+
 while (true) {
   let input = prompt("Lisää hedelmä");
-  if (input === null) {
+  if (input.length === 0) {
     break;
   }
   let input2 = prompt("Lisää hedelmän hinta (EUR)");
-  if (input === null) {
+  if (input2.length === 0) {
     break;
   }
   fruitNames.push(input);
   fruitPrices.push(input2);
 }
-
-// 'Cancel' kun hedelmät on listattu
 
 const obj = {};
 fruitNames.forEach((element, index) => {
